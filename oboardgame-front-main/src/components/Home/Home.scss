@@ -1,0 +1,29 @@
+@use "src/styles/vars";
+
+.home {
+    margin: 2rem;
+    &_description {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        line-height: 3rem;
+    }
+    &_p {
+        margin: auto;
+        font-size: small;
+    }
+
+    &_button {
+        background: vars.$button-color;
+        padding: 1.3rem 4rem 1.3rem 4rem;
+        border-radius: 38px;
+        border: none;
+        margin-top: 5rem;
+        color: white;
+        font-family: vars.$font-family-general;
+
+        &-container {
+            text-align: center;
+        }
+    }
+}

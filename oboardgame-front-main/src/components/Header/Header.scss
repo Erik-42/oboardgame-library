@@ -1,0 +1,45 @@
+.header {
+    &-top {
+        display: flex;
+        justify-content: space-between;
+        margin: 0.5rem;
+    }
+    &-link {
+        display: flex;
+        align-items: flex-end;
+    }
+    &-left {
+        // display: flex;
+        // align-items: flex-end;
+        &_logo {
+            width: 4rem;
+            margin-right: 1rem;
+        }
+        &_title {
+            font-weight: bold;
+            font-size: 1.5rem;
+            padding-bottom: 0.5rem;
+        }
+    }
+    &-right {
+        &_link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        &_logo {
+            width: 3.5rem;
+        }
+        &_p {
+            font-size: 0.7rem;
+            margin-top: 0.3rem;
+            &-active {
+                text-decoration: underline;
+            }
+        }
+    }
+    &-separate {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}

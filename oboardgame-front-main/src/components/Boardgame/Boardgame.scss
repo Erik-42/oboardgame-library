@@ -1,0 +1,87 @@
+@use "src/styles/vars";
+
+.boardgame {
+    &_container {
+        height: calc(100% - 155px);
+        // padding-bottom: 6.5rem;
+    }
+    &_table {
+        margin-top: 1.5rem;
+        font-size: small;
+        height: 100%;
+        &-thead {
+            border-bottom: 1px solid vars.$writing-color;
+            width: 100%;
+            table-layout: fixed;
+        }
+        &-tbody {
+            display: block;
+            overflow: auto;
+            margin-bottom: 50px;
+            height: 100%;
+        }
+        &-line {
+            height: 1.5rem;
+        }
+        &-firstth {
+            text-align: left;
+            padding-left: 0.5rem;
+            width: 5rem;
+        }
+    }
+}
+
+.card {
+    height: calc(100% - 88px);
+}
+
+td {
+    padding: 0.5rem;
+    text-align: center;
+}
+
+td:first-of-type {
+    text-align: left;
+    width: 5rem;
+}
+
+tr {
+    display: table;
+    width: 100%;
+    table-layout:fixed;
+}
+
+.p-messages	 {
+    padding: 1rem;
+    margin: 2rem;
+    height: 3rem;
+    width: 20rem;
+}
+.p-messages-success {
+    padding: 1rem;
+    margin: 2rem;
+}
+.p-messages-summary {
+    padding: 2rem;
+}
+.p-inline-message-success {
+    padding: 0.5rem;
+    opacity: 0.9;
+}
+
+.boardgame_button-addgame {
+    background: vars.$button-color;
+    color: white;
+    font-family: vars.$font-family-general;
+    border: none;
+    border-radius: 5px;
+    padding: 0.3rem;
+}
+
+.p-inputtext-sm {
+    height: 1.8rem;
+}
+
+.pi-search {
+    margin-top: -0.5rem;
+}

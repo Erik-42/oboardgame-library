@@ -1,0 +1,58 @@
+@use "src/styles/vars";
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &_title {
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+    }
+    &_form {
+        display: flex;
+        flex-direction: column;
+        &-email {
+            margin-bottom: 2rem;
+        }
+        &-button {
+            background: vars.$button-color;
+            padding-top: 1.3rem;
+            padding-bottom: 1.3rem;
+            border-radius: 38px;
+            border: none;
+            margin-top: 2rem;
+            color: white;
+            font-family: vars.$font-family-general;
+        }
+        &-register {
+            text-align: center;
+            margin-top: 0.7rem;
+            line-height: 0.7rem;
+        }
+        &-link:hover {
+            text-decoration: underline;
+        }
+        &-error {
+            margin-top: 0.5rem;
+            color: rgb(243, 120, 120);
+            width: 15rem;
+        }
+    }
+}
+
+.p-input-icon {
+    padding-bottom: 5rem;
+    margin-top: -6px;
+}
+
+.p-password-input {
+    height: 2rem;
+}
+
+.p-password-panel {
+    padding: 0.6rem;
+}
+
+.p-password-meter {
+    margin-bottom: 0.5rem;
+}
