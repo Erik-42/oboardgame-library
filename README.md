@@ -162,11 +162,11 @@ mesen.erik@gmail.com
 [github followers-url]: https://github.com/erik-42?tab=followers
 [stars-shield]: https://img.shields.io/github/stars/erik-42/basillecorp-website?style=social
 [stars-url]: https://github.com/erik-42?tab=stargazers
-[contributors-shield]: https://img.shields.io/github/contributors/Erik-42/export-project-structure
+[contributors-shield]: https://img.shields.io/github/contributors/Erik-42/oboardgame-library
 [contributors-url]: https://github.com/Erik-42/oboardgame-library/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Erik-42/export-project-structure
+[forks-shield]: https://img.shields.io/github/forks/Erik-42/oboardgame-library
 [forks-url]: https://github.com/Erik-42/oboardgame-library/forks
-[issues-shield]: https://img.shields.io/github/issues-raw/Erik-42/export-project-structure
+[issues-shield]: https://img.shields.io/github/issues-raw/Erik-42/oboardgame-library
 [issues-url]: https://github.com/Erik-42/oboardgame-library/issues
 
 </div>

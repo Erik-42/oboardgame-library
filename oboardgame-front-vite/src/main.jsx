@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./styles/index.scss";
-import App from "./components/App/App";
+import App from "./components/App/App.jsx";
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/bootstrap4-light-purple/theme.css";
 import store from "./store";
