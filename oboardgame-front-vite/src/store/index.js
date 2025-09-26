@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "../reducers";
-import userMiddleware from "../middlewares/user";
-import libraryMiddleware from "../middlewares/library";
-import boardgameMiddleware from "../middlewares/boardgame";
-import noteMiddleware from "../middlewares/note";
+import userMiddleware from "../middlewares/user_middleware";
+import libraryMiddleware from "../middlewares/library_middleware";
+import boardgameMiddleware from "../middlewares/boardgame_middleware";
+import noteMiddleware from "../middlewares/note_middleware";
 
 const store = configureStore({
   reducer: rootReducer,

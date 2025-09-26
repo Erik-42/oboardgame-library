@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
-import userReducer from "./user";
-import libraryReducer from "./library";
-import boardgameReducer from "./boardgame";
-import noteReducer from "./note";
+import user from "./user_reducer";
+import library from "./library_reducer";
+import boardgame from "./boardgame_reducer";
+import note from "./note_reducer";
 
 export default combineReducers({
-  userReducer,
-  libraryReducer,
-  boardgameReducer,
-  noteReducer,
+  user,
+  library,
+  boardgame,
+  note,
 });

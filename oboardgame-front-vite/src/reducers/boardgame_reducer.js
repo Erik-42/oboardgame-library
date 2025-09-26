@@ -4,7 +4,7 @@ import {
   FETCH_ERROR_MESSAGE,
   SAVE_BOARDGAME,
   SAVE_DATA_BOARDGAME,
-} from "../actions/boardgame";
+} from "../actions/boardgame_actions";
 
 const initialState = {
   data: null,

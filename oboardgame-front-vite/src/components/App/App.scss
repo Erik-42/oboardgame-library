@@ -1,0 +1,31 @@
+/* Styles de base pour l'application */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  padding: 1rem;
+}
+
+/* Styles temporaires pour les composants */
+.login,
+.register,
+.library,
+.boardgame,
+.randomgame,
+.settings,
+.tuto,
+.forgot-password,
+.update-password {
+  padding: 2rem;
+  text-align: center;
+}
+
+.error-404 {
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}

@@ -4,8 +4,8 @@ import {
   fetchErrorMessage,
   saveBoardGame,
   saveDataBoardGame,
-} from "../actions/boardgame";
-import { logout } from "../actions/user";
+} from "../actions/boardgame_actions";
+import { logout } from "../actions/user_actions";
 import axiosInstance from "./axiosInstance";
 
 const boardgameMiddleware = (store) => (next) => (action) => {
