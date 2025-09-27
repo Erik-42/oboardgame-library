@@ -1,8 +1,42 @@
-export const FETCH_LIBRARY = "FETCH_LIBRARY";
+// Types d'actions pour la récupération de la bibliothèque
+export const FETCH_LIBRARY_REQUEST = "FETCH_LIBRARY_REQUEST";
+export const FETCH_LIBRARY_SUCCESS = "FETCH_LIBRARY_SUCCESS";
+export const FETCH_LIBRARY_FAILURE = "FETCH_LIBRARY_FAILURE";
 
-export const fetchLibrary = () => ({
-  type: FETCH_LIBRARY,
+// Action pour démarrer le chargement de la bibliothèque
+export const fetchLibraryRequest = () => ({
+  type: FETCH_LIBRARY_REQUEST
 });
+
+// Action pour le succès du chargement de la bibliothèque
+export const fetchLibrarySuccess = (library) => ({
+  type: FETCH_LIBRARY_SUCCESS,
+  payload: library
+});
+
+// Action pour l'échec du chargement de la bibliothèque
+export const fetchLibraryFailure = (error) => ({
+  type: FETCH_LIBRARY_FAILURE,
+  payload: error
+});
+
+// Action asynchrone pour récupérer la bibliothèque
+export const fetchLibrary = () => {
+  return async (dispatch) => {
+    dispatch(fetchLibraryRequest());
+    try {
+      // Remplacez cette URL par votre véritable endpoint d'API
+      const response = await fetch('/api/library');
+      if (!response.ok) {
+        throw new Error('Échec du chargement de la bibliothèque');
+      }
+      const data = await response.json();
+      dispatch(fetchLibrarySuccess(data));
+    } catch (error) {
+      dispatch(fetchLibraryFailure(error.message));
+    }
+  };
+};
 
 export const SAVE_DATA = "SAVE_DATA";
 

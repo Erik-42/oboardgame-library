@@ -1,32 +1,123 @@
-@use "reset";
-@use "vars";
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+// ==========================================================================
+// FICHIER PRINCIPAL SCSS
+// Import de tous les fichiers partiels
+// ==========================================================================
 
-// body {
-//     font-family: "Raleway", sans-serif;
-//     background-color: vars.$background-color;
-//     color: vars.$writing-color;
-// }
+// 1. Configuration et variables
+// --------------------------------------------------------------------------
+@use 'root' as *;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+// 2. Réinitialisation et styles de base
+// --------------------------------------------------------------------------
+@use 'reset';
+
+// 3. Éléments HTML de base
+// --------------------------------------------------------------------------
+:root {
+  color-scheme: dark;
+}
+
 html {
   width: 100%;
   height: 100%;
-}
-
-:root {
-  --background-color: #2d2d2d;
-  --writing-color: #d0d0d0;
-  --button-color: linear-gradient(
-    90deg,
-    rgb(13, 175, 211) 0%,
-    rgb(91, 106, 235) 51.5%,
-    rgb(157, 49, 254) 100%
-  );
+  font-size: 100%; // 16px par défaut
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Raleway", sans-serif;
-  background-color: var(--background-color);
-  color: var(--writing-color);
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+// 4. Éléments de base
+// --------------------------------------------------------------------------
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+  font-family: var(--font-family-secondary);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+  color: var(--color-text);
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+  
+  &:hover {
+    color: var(--color-primary-light);
+    text-decoration: underline;
+  }
+  
+  &:focus {
+    outline: 2px solid var(--color-primary-light);
+    outline-offset: 2px;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border-style: none;
+}
+
+// 5. Classes utilitaires
+// --------------------------------------------------------------------------
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--container-padding);
+  padding-left: var(--container-padding);
+}
+
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+
+// 6. Médias queries pour la réactivité
+// --------------------------------------------------------------------------
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (min-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == 'md' {
+    @media (min-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == 'lg' {
+    @media (min-width: $breakpoint-lg) { @content; }
+  } @else if $breakpoint == 'xl' {
+    @media (min-width: $breakpoint-xl) { @content; }
+  } @else if $breakpoint == 'xxl' {
+    @media (min-width: $breakpoint-xxl) { @content; }
+  } @else {
+    @warn "Le point de rupture #{$breakpoint} n'existe pas dans la liste des breakpoints disponibles.";
+  }
 }

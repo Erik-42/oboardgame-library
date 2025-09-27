@@ -4,7 +4,13 @@ import {
   addErrorMessage,
   DELETE_BOARDGAME,
   eraseBoardgameLine,
-  FETCH_LIBRARY,
+  FETCH_LIBRARY_REQUEST,
+  FETCH_LIBRARY_SUCCESS,
+  FETCH_LIBRARY_FAILURE,
+  fetchLibrarySuccess,
+  fetchLibraryFailure,
+  SELECT_RANDOM_BOARDGAME,
+  UPDATE_LIBRARY_LINE,
   saveBoardgameName,
   saveData,
   saveDataAfterUpdate,
@@ -15,15 +21,17 @@ import axiosInstance from "./axiosInstance";
 
 const libraryMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
-    case FETCH_LIBRARY:
+    case FETCH_LIBRARY_REQUEST:
       axiosInstance
         .get("/library")
         .then((res) => {
-          store.dispatch(saveData(res.data.data));
+          store.dispatch(fetchLibrarySuccess(res.data.data));
         })
         .catch((err) => {
           console.error(err);
-          const error = err.response?.data?.message;
+          const error = err.response?.data?.message || 'Erreur lors du chargement de la bibliothèque';
+          store.dispatch(fetchLibraryFailure(error));
+          
           if (error === "Pas d'autorisation token") {
             store.dispatch(logout());
           }

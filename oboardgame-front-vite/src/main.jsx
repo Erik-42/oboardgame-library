@@ -1,16 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./styles/index.scss";
-import App from "./components/App/App.jsx";
-import "primeicons/primeicons.css";
-import "primereact/resources/themes/bootstrap4-light-purple/theme.css";
-import store from "./store";
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+// Styles globaux
+import "./index.css";
+
+// Composant principal
+import App from "./components/App/App.jsx";
+
+// Configuration du store Redux
+import store from "./store";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );
