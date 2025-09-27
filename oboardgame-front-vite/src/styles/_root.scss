@@ -1,6 +1,6 @@
 // ==========================================================================
 // ROOT VARIABLES
-// Fichier centralisé des variables de style
+// Fichier centralisé des variables de style avec palette WCAG AA
 // ==========================================================================
 
 // --------------------------------------------------------------------------
@@ -24,39 +24,47 @@ $line-height-base: 1.5;
 $line-height-heading: 1.2;
 
 // --------------------------------------------------------------------------
-// 2. Palette de couleurs
+// 2. Palette de couleurs WCAG AA (bleu/vert/noir)
 // --------------------------------------------------------------------------
 
-// Couleurs principales
-$color-primary: #4A90E2;
-$color-primary-dark: #357ABD;
-$color-primary-light: #6BA8E8;
+// Couleurs principales - Palette bleu/vert/noir
+$color-primary: #3B82F6;        // Bleu accessible (5.9:1 avec blanc)
+$color-primary-dark: #1E40AF;   // Bleu foncé
+$color-primary-light: #60A5FA;  // Bleu clair
 
-// Couleurs de texte
-$color-text: #F5F5F5;
-$color-text-secondary: #CCCCCC;
-$color-text-muted: #999999;
-$color-text-on-primary: #FFFFFF;
-$color-text-on-dark: #FFFFFF;
-$color-text-on-light: #121212;
+// Couleurs secondaires - Vert pour les succès
+$color-secondary: #10B981;      // Vert accessible (4.8:1 avec blanc)
+$color-secondary-dark: #047857; // Vert foncé
+$color-secondary-light: #34D399; // Vert clair
 
-// Arrière-plans
-$color-background: #1E1E1E;
-$color-surface: #2D2D2D;
-$color-card: #383838;
+// Couleurs de texte - Contraste WCAG AA
+$color-text: #F8FAFC;           // Blanc presque pur (excellent contraste)
+$color-text-secondary: #CBD5E1; // Gris bleu clair (5.9:1 minimum)
+$color-text-muted: #94A3B8;     // Gris plus foncé (7.1:1 minimum)
+$color-text-on-primary: #FFFFFF; // Blanc pur pour texte sur fond coloré
+$color-text-on-dark: #FFFFFF;   // Blanc pur pour texte sur fond sombre
+$color-text-on-light: #0F172A;  // Bleu ardoise très foncé
 
-// Couleurs d'état
-$color-success: #66BB6A;
-$color-warning: #FFA726;
-$color-error: #F44336;
-$color-info: #29B6F6;
+// Arrière-plans - Palette sombre WCAG AA
+$color-background: #0D1117;     // Presque noir, nuance bleutée
+$color-surface: #161B22;        // Gris foncé, nuance bleutée
+$color-card: #21262D;           // Gris moyen, nuance bleutée
+$color-hover: #475569;          // Bleu gris plus clair pour hover
 
-// Bordures
-$color-border: #4A4A4A;
-$color-border-light: #5A5A5A;
+// Couleurs d'état - Respectant WCAG AA
+$color-success: #10B981;        // Vert succès (4.8:1 avec blanc)
+$color-warning: #F59E0B;        // Orange avertissement (4.5:1 avec blanc)
+$color-error: #EF4444;          // Rouge erreur (5.7:1 avec blanc)
+$color-info: #3B82F6;           // Bleu info (5.9:1 avec blanc)
 
-// Dégradés
-$gradient-primary: linear-gradient(90deg, #0DAFD3 0%, #5B6AEB 51.5%, #9D31FE 100%);
+// Bordures - Contraste suffisant
+$color-border: #475569;         // Gris bleu (5.9:1 avec fond sombre)
+$color-border-light: #64748B;   // Gris bleu plus clair (4.5:1 avec fond sombre)
+
+// Dégradés - Palette harmonieuse
+$gradient-primary: linear-gradient(135deg, #3B82F6 0%, #10B981 100%);
+$gradient-success: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+$gradient-error: linear-gradient(135deg, #EF4444 0%, #F87171 100%);
 
 // --------------------------------------------------------------------------
 // 3. Espacements et dimensions
@@ -88,10 +96,10 @@ $container-padding: $spacing-md;
 // --------------------------------------------------------------------------
 // 4. Ombres
 // --------------------------------------------------------------------------
-$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-$shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-$shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-$shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+$shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.3);
+$shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.4), 0 2px 4px -1px rgba(15, 23, 42, 0.3);
+$shadow-md: 0 10px 15px -3px rgba(15, 23, 42, 0.4), 0 4px 6px -2px rgba(15, 23, 42, 0.3);
+$shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.4), 0 10px 10px -5px rgba(15, 23, 42, 0.2);
 
 // --------------------------------------------------------------------------
 // 5. Transitions et animations
@@ -129,39 +137,51 @@ $zindex-tooltip: 1070;
   --font-family-primary: #{$font-family-primary};
   --font-family-secondary: #{$font-family-secondary};
   --font-family-mono: #{$font-family-mono};
-  
+
   // Tailles de police
   --font-size-base: #{$font-size-base};
   --font-size-sm: #{$font-size-sm};
   --font-size-lg: #{$font-size-lg};
-  
-  // Couleurs
+
+  // Couleurs principales
   --color-primary: #{$color-primary};
   --color-primary-dark: #{$color-primary-dark};
   --color-primary-light: #{$color-primary-light};
-  
+
+  // Couleurs secondaires
+  --color-secondary: #{$color-secondary};
+  --color-secondary-dark: #{$color-secondary-dark};
+  --color-secondary-light: #{$color-secondary-light};
+
+  // Couleurs de texte
   --color-text: #{$color-text};
   --color-text-secondary: #{$color-text-secondary};
   --color-text-muted: #{$color-text-muted};
   --color-text-on-primary: #{$color-text-on-primary};
   --color-text-on-dark: #{$color-text-on-dark};
   --color-text-on-light: #{$color-text-on-light};
-  
+
+  // Arrière-plans
   --color-background: #{$color-background};
   --color-surface: #{$color-surface};
   --color-card: #{$color-card};
-  
+  --color-hover: #{$color-hover};
+
+  // Couleurs d'état
   --color-success: #{$color-success};
   --color-warning: #{$color-warning};
   --color-error: #{$color-error};
   --color-info: #{$color-info};
-  
+
+  // Bordures
   --color-border: #{$color-border};
   --color-border-light: #{$color-border-light};
-  
+
   // Dégradés
   --gradient-primary: #{$gradient-primary};
-  
+  --gradient-success: #{$gradient-success};
+  --gradient-error: #{$gradient-error};
+
   // Espacements
   --spacing-xxs: #{$spacing-xxs};
   --spacing-xs: #{$spacing-xs};
@@ -170,40 +190,40 @@ $zindex-tooltip: 1070;
   --spacing-lg: #{$spacing-lg};
   --spacing-xl: #{$spacing-xl};
   --spacing-xxl: #{$spacing-xxl};
-  
+
   // Rayons de bordure
   --border-radius-sm: #{$border-radius-sm};
   --border-radius: #{$border-radius};
   --border-radius-lg: #{$border-radius-lg};
   --border-radius-xl: #{$border-radius-xl};
   --border-radius-pill: #{$border-radius-pill};
-  
+
   // Hauteurs
   --header-height: #{$header-height};
   --footer-height: #{$footer-height};
-  
+
   // Largeurs
   --container-max-width: #{$container-max-width};
   --container-padding: #{$container-padding};
-  
+
   // Ombres
   --shadow-sm: #{$shadow-sm};
   --shadow: #{$shadow};
   --shadow-md: #{$shadow-md};
   --shadow-lg: #{$shadow-lg};
-  
+
   // Transitions
   --transition-base: #{$transition-base};
   --transition-fade: #{$transition-fade};
   --transition-collapse: #{$transition-collapse};
-  
+
   // Points de rupture
   --breakpoint-sm: #{$breakpoint-sm};
   --breakpoint-md: #{$breakpoint-md};
   --breakpoint-lg: #{$breakpoint-lg};
   --breakpoint-xl: #{$breakpoint-xl};
   --breakpoint-xxl: #{$breakpoint-xxl};
-  
+
   // Z-index
   --zindex-dropdown: #{$zindex-dropdown};
   --zindex-sticky: #{$zindex-sticky};

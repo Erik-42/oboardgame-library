@@ -13,9 +13,7 @@ import Home from "../Home/Home.jsx";
 import BoardGames from "../BoardGames/BoardGames.jsx";
 import Search from "../Search/Search.jsx";
 import About from "../About/About.jsx";
-// Theme
-import 'primereact/resources/themes/saga-blue/theme.css';
-// Core CSS
+// Core CSS - suppression des thèmes par défaut pour utiliser notre palette personnalisée
 import 'primereact/resources/primereact.min.css';
 // Icons
 import 'primeicons/primeicons.css';
@@ -49,19 +47,19 @@ function App() {
   // Désactivation temporaire de l'authentification
   const isAuthenticated = true;
   const user = { name: 'Utilisateur invité' };
-  
+
   console.log('Application démarrée sans authentification');
-  
+
   // Suppression de l'initialisation de l'utilisateur
   useEffect(() => {
     console.log('Application initialisée');
   }, []);
 
   return (
-    <div className="app min-h-screen">
+    <div className="app-container">
       <InstallPWA />
       <Header />
-      <main className="p-4">
+      <main className="app-main">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/boardgames" element={<BoardGames />} />
@@ -73,6 +71,19 @@ function App() {
           <Route path="*" element={<Error404 />} />
         </Routes>
       </main>
+      <style jsx global>{`
+        .app-container {
+          display: flex;
+          flex-direction: column;
+          height: 100vh;
+          overflow: hidden; // Empêche le scroll sur le conteneur principal
+        }
+        .app-main {
+          flex-grow: 1; // Prend tout l'espace restant
+          overflow-y: auto; // Ajoute un scroll si le contenu dépasse
+          padding: 1rem;
+        }
+      `}</style>
     </div>
   );
 }

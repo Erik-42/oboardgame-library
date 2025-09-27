@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 
 // Styles globaux
 import "./index.css";
+import "./styles/index.scss";
 
 // Composant principal
 import App from "./components/App/App.jsx";

@@ -8,7 +8,7 @@ const Header = () => {
   const navigate = useNavigate();
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 992);
-  
+
   // Utilisateur par défaut pour le mode sans connexion
   const user = { name: 'Invité' };
 
@@ -44,26 +44,28 @@ const Header = () => {
   ];
 
   return (
-    <header className="header bg-primary shadow-2 w-full fixed top-0 z-5">
+    <header className="header shadow-2 w-full fixed top-0 z-5" style={{ backgroundColor: 'var(--color-surface)' }}>
       <div className="flex justify-content-between align-items-center px-4 h-4rem">
         <div className="flex align-items-center">
-          <Button 
-            icon="pi pi-bars" 
-            className="p-button-text p-button-rounded p-button-lg mr-3 text-white" 
-            onClick={() => setSidebarVisible(true)} 
+          <Button
+            icon="pi pi-bars"
+            className="p-button-text p-button-rounded p-button-lg mr-3"
+            onClick={() => setSidebarVisible(true)}
           />
           <Link to="/" className="no-underline">
-            <h1 className="text-blue-600 m-0 text-3xl font-bold hover:text-blue-700 transition-colors duration-200">O'BoardGame</h1>
+            <h1 className="text-3xl font-bold m-0" style={{ color: 'var(--color-primary)' }}>
+              O'BoardGame
+            </h1>
           </Link>
         </div>
 
         <div className="flex align-items-center">
           {!isMobile && (
             <div className="flex align-items-center">
-              <span className="text-white mr-3">Bonjour, {user.name}</span>
-              <Button 
-                label="Connexion" 
-                className="p-button-text p-button-lg text-white" 
+              <span className="mr-3">Bonjour, {user.name}</span>
+              <Button
+                label="Connexion"
+                className="p-button-text p-button-lg"
                 onClick={handleLogin}
               />
             </div>
@@ -72,17 +74,18 @@ const Header = () => {
       </div>
 
       {/* Sidebar pour mobile */}
-      <Sidebar 
-        visible={sidebarVisible} 
+      <Sidebar
+        visible={sidebarVisible}
         onHide={() => setSidebarVisible(false)}
         className="w-15rem"
+        style={{ backgroundColor: 'var(--color-surface)' }}
       >
         <div className="flex flex-column h-full">
           <div className="mb-4">
             <h2 className="text-2xl font-bold mb-4">Menu</h2>
             <div className="flex flex-column">
               {navItems.map((item) => (
-                <Button 
+                <Button
                   key={item.path}
                   label={item.label}
                   icon={item.icon}
@@ -92,13 +95,13 @@ const Header = () => {
               ))}
             </div>
           </div>
-          
+
           <div className="mt-auto">
-            <div className="text-600 mb-3">Mode invité</div>
-            <Button 
-              label="Se connecter" 
+            <div className="mb-3">Mode invité</div>
+            <Button
+              label="Se connecter"
               icon="pi pi-user"
-              className="w-full" 
+              className="w-full"
               onClick={handleLogin}
             />
           </div>

@@ -6,11 +6,12 @@
 // 1. Configuration et variables
 // --------------------------------------------------------------------------
 @use 'root' as *;
+@use 'reset';
+@use 'primereact_overrides';
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 // 2. Réinitialisation et styles de base
 // --------------------------------------------------------------------------
-@use 'reset';
 
 // 3. Éléments HTML de base
 // --------------------------------------------------------------------------

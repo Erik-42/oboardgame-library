@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
-import { InputText } from "primereact/inputtext";
-import { Password } from "primereact/password";
-import { Button } from "primereact/button";
-import { Card } from "primereact/card";
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { loginUser } from '../../middlewares/user_middleware';
 import PropTypes from 'prop-types';
+import WelcomeCard from './partials/WelcomeCard';
+import LoginFormCard from './partials/LoginFormCard';
+import RegisterCard from './partials/RegisterCard';
 
 const Login = ({ onSuccess, onError, redirectTo = '/' }) => {
   const [email, setEmail] = useState("");
@@ -30,10 +29,10 @@ const Login = ({ onSuccess, onError, redirectTo = '/' }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLocalError(null);
-    
+
     try {
       const result = await dispatch(loginUser({ email, password }));
-      
+
       if (loginUser.fulfilled.match(result)) {
         if (onSuccess) {
           onSuccess(result.payload);
@@ -52,112 +51,135 @@ const Login = ({ onSuccess, onError, redirectTo = '/' }) => {
   };
 
   return (
-    <div className="login-container">
-      <Card 
-        title="Connexion" 
-        className="login-card"
-      >
-        <form onSubmit={handleSubmit} className="login-form">
-          <div className="field">
-            <label htmlFor="email" className="block text-900 font-medium mb-2">
-              Email
-            </label>
-            <InputText
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Votre email"
-              required
-              className="w-full mb-3"
-              disabled={loading}
-            />
-          </div>
-
-          <div className="field">
-            <label htmlFor="password" className="block text-900 font-medium mb-2">
-              Mot de passe
-            </label>
-            <Password
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Votre mot de passe"
-              required
-              toggleMask
-              feedback={false}
-              className="w-full mb-3"
-              inputClassName="w-full"
-              disabled={loading}
-            />
-          </div>
-
-          {localError && (
-            <div className="error-message">
-              {localError}
-            </div>
-          )}
-
-          <Button 
-            type="submit" 
-            label={loading ? 'Connexion en cours...' : 'Se connecter'}
-            icon={loading ? 'pi pi-spin pi-spinner' : 'pi pi-sign-in'}
-            className="w-full"
-            disabled={loading}
-          />
-
-          <div className="register-link">
-            <span className="text-600">Pas encore de compte ? </span>
-            <a 
-              href="/register" 
-              className="text-primary font-medium no-underline hover:underline"
-              onClick={(e) => {
-                e.preventDefault();
-                navigate('/register');
-              }}
-            >
-              S'inscrire
-            </a>
-          </div>
-        </form>
-      </Card>
+    <div className="login-page">
+      <div className="cards-grid">
+        <WelcomeCard className="info-card clickable-card" />
+        <LoginFormCard 
+          className="login-card clickable-card" 
+          email={email} 
+          setEmail={setEmail} 
+          password={password} 
+          setPassword={setPassword} 
+          handleSubmit={handleSubmit} 
+          loading={loading} 
+          localError={localError} 
+        />
+        <RegisterCard className="support-card clickable-card" />
+      </div>
 
       <style jsx>{`
-        .login-container {
+        .login-page {
+          height: calc(100vh - var(--header-height) - (var(--spacing-lg) * 2));
+          padding: var(--spacing-lg);
           display: flex;
-          justify-content: center;
           align-items: center;
-          min-height: 100vh;
-          background-color: var(--surface-ground);
-          padding: 1rem;
+          justify-content: center;
+          background-color: var(--color-background);
+          overflow: hidden;
         }
-        
-        .login-card {
+
+        .cards-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: var(--spacing-lg);
           width: 100%;
-          max-width: 28rem;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+          max-width: 1080px;
         }
-        
+
+        .info-card,
+        .login-card,
+        .support-card {
+          background-color: var(--color-surface);
+          box-shadow: var(--shadow);
+          border: 1px solid var(--color-border);
+          position: relative;
+        }
+
+        .clickable-card {
+          cursor: pointer;
+          transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .clickable-card:hover,
+        .clickable-card:focus-within {
+          transform: translateY(-4px);
+          box-shadow: var(--shadow-lg);
+          border-color: var(--color-primary);
+        }
+
+        .clickable-card:active {
+          transform: translateY(-2px);
+        }
+
         .login-form {
           display: flex;
           flex-direction: column;
           gap: 1.5rem;
         }
-        
+
+        .info-list {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+
+        .info-list li {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          color: var(--color-text-secondary);
+        }
+
+        .info-list i {
+          color: var(--color-secondary);
+          font-size: 1rem;
+        }
+
         .error-message {
-          color: #f87171;
-          background-color: #fef2f2;
+          color: var(--color-error);
+          background-color: var(--color-card);
           padding: 0.75rem;
           border-radius: 6px;
-          margin-bottom: 1rem;
-          border: 1px solid #fecaca;
+          border: 1px solid var(--color-border);
         }
-        
-        .register-link {
-          text-align: center;
-          margin-top: 1.5rem;
-          padding-top: 1rem;
-          border-top: 1px solid var(--surface-border);
+
+        .support-card .help-box {
+          margin-top: var(--spacing-md);
+          display: flex;
+          align-items: flex-start;
+          gap: 0.75rem;
+          color: var(--color-text-secondary);
+          background-color: var(--color-card);
+          border-radius: 6px;
+          padding: var(--spacing-sm);
+          border: 1px solid var(--color-border);
+        }
+
+        .support-card .help-box i {
+          color: var(--color-info);
+          font-size: 1.1rem;
+        }
+
+        @media (max-width: 1200px) {
+          .cards-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+        }
+
+        @media (max-width: 768px) {
+          .login-page {
+            padding: var(--spacing-md);
+            height: auto;
+            min-height: calc(100vh - var(--header-height));
+            overflow-y: auto;
+          }
+
+          .cards-grid {
+            grid-template-columns: 1fr;
+          }
         }
       `}</style>
     </div>
